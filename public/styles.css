@@ -1,0 +1,9 @@
+@keyframes bounce-slow {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+  }
+  
+  .hover-bounce-slow {
+    animation: bounce-slow 1s ease-in-out 2;
+  }
