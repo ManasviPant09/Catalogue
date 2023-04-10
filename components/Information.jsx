@@ -1,9 +1,21 @@
 import React from 'react';
 import { useState } from 'react';
+
+const options = [
+  { value: 'option1', label: 'Lowest Number (First)' },
+  { value: 'option2', label: 'Highest Number (First)' },
+  { value: 'option3', label: 'A-Z' },
+  { value: 'option3', label: 'Z-A' },
+];
+
 const Information = () =>{
+  const [selectedOption, setSelectedOption] = useState(options[0]);
   const [isOpen, setIsOpen] = useState(false);
-  function toggleDropdown() {
-    setIsOpen(!isOpen);}
+
+  const handleOptionChange = (option) => {
+    setSelectedOption(option);
+    setIsOpen(false);
+  }
     
   return(
     <div className="flex flex-col">
@@ -34,20 +46,58 @@ const Information = () =>{
     <h1 className="rounded-lg h-28 text-xl text-white mt-8 mr-48 bg-green-500 p-4 w-auto">Search for a Pokémon by name or using its National Pokédex Number.</h1></div>    
     <div className="h-16 bg-gray-400">
     </div>
-    <div className="flex justify-center">
-        <button className="bg-blue-400 hover:bg-blue-600 text-white font-medium py-4 px-32 rounded">Surprise Me</button>
-        <div className={`${isOpen ? 'block' : 'hidden'} absolute right-0`}>
-        <div className="dropdown">
-          <div tabIndex="0" className="m-1 btn btn-sm btn-outline-primary dropdown-toggle" onClick={toggleDropdown}>
-            Options
-          </div>
-          <div tabIndex="-1" role="menu" aria-hidden="true" className="menu dropdown-menu">
-            <div tabIndex="0" role="menuitem" className="menu-item">Option 1</div>
-            <div tabIndex="0" role="menuitem" className="menu-item">Option 2</div>
-            <div tabIndex="0" role="menuitem" className="menu-item">Option 3</div>
+    <div className="flex justify-center mt-4">
+        <button className="bg-blue-400 hover:bg-blue-600 text-white font-medium py-4 px-32 rounded mr-72">Surprise Me</button>
+        <div className="relative inline-block text-left">
+          <div>
+            <span className="rounded-md shadow-sm">
+              <button
+               type="button"
+               className="bg-gray-600 inline-flex justify-center w-full rounded-md border border-gray-300 px-12 py-2 bg-white text-medium font-medium text-white focus:outline-none focus:ring-indigo-500"
+               id="options-menu"
+               aria-haspopup="true"
+               onClick={() => setIsOpen(!isOpen)}>
+              {selectedOption.label}
+            <svg
+              className="-mr-1 ml-2 h-5 w-5 hover:bg-gray-800"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                fillRule="evenodd"
+                d="M10 12a1 1 0 01-.707-.293l-4-4a1 1 0 111.414-1.414L10 9.586l3.293-3.293a1 1 0 111.414 1.414l-4 4A1 1 0 0110 12z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </button>
+        </span>
+      </div>
+      {isOpen && (
+        <div
+          className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+          role="menu"
+          aria-orientation="vertical"
+          aria-labelledby="options-menu"
+        >
+          <div className="py-1" role="none">
+            {options.map((option) => (
+              <button
+                key={option.value}
+                className={`${
+                  option === selectedOption ? 'bg-gray-100 text-gray-900' : 'text-gray-700'
+                } block px-4 py-2 text-sm w-full text-left`}
+                role="menuitem"
+                onClick={() => handleOptionChange(option)}
+              >
+                {option.label}
+              </button>
+            ))}
           </div>
         </div>
-      </div>
+      )}
+    </div>
     </div>
 </div>
 );
