@@ -22,13 +22,14 @@ const { loading, error, data, fetchMore } = useQuery(POKEMONS_QUERY, {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :</p>;
   return (
-    <div className="flex justify-center">
-      <div className="grid grid-cols-4 gap-4">
+    <div className="flex justify-center mt-0.5 w-full">
+      <div className="pr-44 pl-44 pt-4 grid gird-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-2 bg-gray-200">
         {data.pokemons.map(pokemon => (
-          <div key={pokemon.id} className="bg-gray-100 p-4 rounded-md">
-            <img src={pokemon.image} alt={pokemon.name} className="w-48 h-52 object-contain mx-auto" />
-            <h2 className="text-lg font-bold text-center mt-2 mb-1">{pokemon.name}</h2>
-            <p className="text-gray-700 text-center">{pokemon.types.join(', ')}</p>
+          <div key={pokemon.id} className="bg-white p-4 rounded-md">
+            <img src={pokemon.image} alt={pokemon.name} className="rounded-md w-full h-52 object-contain mx-auto p-4 rounded-lg bg-gray-100" />
+            <h2 className="text-lg font-bold text-gray-700 mt-2 mb-1">#0{pokemon.number}</h2>
+            <h2 className="text-lg font-bold text-gray-700 mt-2 mb-1">{pokemon.name}</h2>
+            <p className="text-white rounded-md bg-gray-700 p-2">{pokemon.types.join(', ')}</p>
           </div>
         ))}
       </div>
