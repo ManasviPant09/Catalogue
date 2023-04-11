@@ -3,7 +3,7 @@ import Navbar from '@/components/Navbar';
 import Header from '@/components/Header';
 import Information from '@/components/Information';
 import Sidebar from '@/components/Sidebar';
-import FetchData from '@/components/FetchData';
+import FetchPokemon from '@/components/FetchPokemon';
 
 export default function Home() {
   return (
@@ -11,8 +11,7 @@ export default function Home() {
     <Header />
     <Navbar />
     <Sidebar />
-    <Information />
-    <FetchData />
+    <FetchPokemon />
     </>
 
   );

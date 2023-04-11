@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { gql } from 'graphql-tag';
+import { useRouter } from 'next/router';
 import { useQuery } from '@apollo/client';
 
 const POKEMONS_QUERY = gql`
@@ -17,6 +18,7 @@ const POKEMONS_QUERY = gql`
 const PAGE_SIZE = 20;
 
 const FetchData = () => {
+  
   const { loading, error, data, fetchMore } = useQuery(POKEMONS_QUERY, {
     variables: {
       first: PAGE_SIZE * 3,
@@ -24,8 +26,8 @@ const FetchData = () => {
   });
   const [page, setPage] = useState(1);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :</p>;
+  if (loading) return <p>Loading</p>;
+  if (error) return <p>Error</p>;
 
   const paginatedPokemons = data?.pokemons?.slice(0, PAGE_SIZE * page) ?? [];
 
@@ -47,7 +49,7 @@ const FetchData = () => {
       });
       setPage(page + 1);
     };
-
+  const router = useRouter();
   return (
     <div className="flex flex-col justify-center mt-0.5 w-full mr-2 bg-gray-200">
       <div className="pr-44 pl-44 pt-4 grid gird-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-2">
@@ -55,6 +57,7 @@ const FetchData = () => {
           <div
             key={pokemon.id}
             className="bg-white p-2 rounded-md hover:shadow-lg hover:-translate-y-2 transition-transform duration-200"
+            onClick={() => router.push(`/pokemon?id=${pokemon.id}&name=${pokemon.name}`)}
           >
             <img
               src={pokemon.image}
