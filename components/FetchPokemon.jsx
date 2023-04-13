@@ -55,11 +55,12 @@ const FetchPokemon = () => {
     variables: { id, name },
   });
   const [showEvolution, setShowEvolution] = useState(false);
-  if (loading) return <p>Loading</p>;
-  if (error) return <p>Error</p>;
+  const [loadingEvolution, setLoadingEvolution] = useState(false);
   
-  const { pokemon } = data;
   const renderEvolution = (evolution) => {
+    if (loadingEvolution) {
+      return <p>Loading Evolution Data</p>;
+    }
     return (
       <div key={evolution.id} className="flex flex-col items-center">
         <img src={evolution.image} alt={evolution.name} className="h-24" />
@@ -72,6 +73,18 @@ const FetchPokemon = () => {
       </div>
     );
   };
+  const handleShowEvolution = async () => {
+    setLoadingEvolution(true);
+    await refetch();
+    setLoadingEvolution(false);
+    setShowEvolution(true);
+  };
+  const { pokemon } = data;
+  const { refetch } = useQuery(POKEMONS_QUERY, {
+    variables: { id, name },
+    skip: !showEvolution,
+    onCompleted: () => setLoadingEvolution(false),
+  });
   return (
     <>
       <div className="flex h-24 -mt-12 w-full bg-gray-600"></div>
@@ -82,7 +95,7 @@ const FetchPokemon = () => {
         className="rounded-md h-112 object-contain mx-auto p-12 px-6 rounded-lg bg-white ml-64" 
         src={pokemon.image}
         alt={pokemon.name}/>
-        <div className="flex flex-col mr-64">
+        <div className="flex flex-col mr-64 px-6">
         <div className="flex flex-col bg-blue-500 p-8 rounded rounded-lg text-white font-medium text-l">
         <p className="p-2">Weight: {pokemon.weight.minimum} - {pokemon.weight.maximum}</p>
         <p className="p-2">Height: {pokemon.height.minimum} - {pokemon.height.maximum}</p>
@@ -98,18 +111,19 @@ const FetchPokemon = () => {
         </div>
         </div>
         </div>
-        <button onClick={() => setShowEvolution(!showEvolution)} 
-        className="flex justify-center items-center bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-2 rounded rounded-lg w-32">Show Evolution</button>
+        <button onClick={handleShowEvolution} 
+        className="flex justify-center items-center bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-2 rounded rounded-lg w-32 mt-4 mb-4">Show Evolution</button>
         {showEvolution && (
         <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center z-10">
-            <div className="bg-white p-8 rounded-lg">
-                {pokemon.evolutions && renderEvolution(pokemon)}
-                <button onClick={() => setShowEvolution(false)}
-                className="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded mt-4">
-                Close</button>
-            </div>
+          <div className="flex flex-col justify-center items-center bg-white p-12 rounded-lg">
+            {pokemon.evolutions && renderEvolution(pokemon)}
+            <button onClick={() => setShowEvolution(false)}
+              className="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded mt-4">
+              Close
+            </button>
+          </div>
         </div>
-        )}
+      )}
       </div>
     </>
   );
