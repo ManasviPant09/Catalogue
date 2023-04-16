@@ -7,7 +7,7 @@ const Header = () =>{
         transform: 'translateY(-0.5rem)',
       };
     return(
-      <nav className="bg-white-500 flex justify-center border-b-2 border-gray-200 mt-0.5 w-full">
+      <nav className="bg-white-500 flex justify-center border-b-2 border-gray-200 mt-0.5 w-auto">
         <div className="max-w-7xl">
           <div className="relative flex items-center justify-between h-24">
             <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">

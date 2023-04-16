@@ -15,7 +15,7 @@ const Navbar = () => {
                     <div className="text-gray-800 px-3 py-2 rounded-md text-sm font-semibold group-hover:text-white mb-4">
                     Home</div>
                     </div>                  
-                    <div className="flex flex-col bg-red-600 items-center hover:bg-red-600 group pt-4 w-32 border-b-8 border-red-600">
+                    <div className="flex flex-col bg-red-600 items-center hover:bg-red-600 group pt-4 w-32 border-b-8 border-red-700">
                         <svg xmlns="https://icons8.com/icon/100974/pokeball/svg" className="h-8 w-8 inline-block group-hover:text-white text-white" fill="none" viewBox="0 0 20 20" stroke="currentColor">
                             <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
                             <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
