@@ -98,8 +98,13 @@ const FetchPokemon = () => {
         </div>
         </div>
         </div>
-        <button onClick={() => setShowEvolution(!showEvolution)} 
-        className="flex flex-col justify-center items-center bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-2 rounded rounded-lg w-44 mt-4 mb-8">Show Evolution</button>
+        {pokemon.evolutions && (
+        <button
+          onClick={() => setShowEvolution(!showEvolution)}
+          className="flex flex-col justify-center items-center bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-2 rounded rounded-lg w-44 mt-4 mb-8">
+          Show Evolution
+        </button>
+        )}
         {showEvolution && (
         <div className="flex flex-col items-center justify-center fixed top-10 left-0 w-full h-full bg-black bg-opacity-50 z-10">
             <div className="flex flex-col justify-center items-center bg-white p-8 rounded-lg">
