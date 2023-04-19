@@ -51,7 +51,7 @@ const FetchData = () => {
     };
   const router = useRouter();
   return (
-    <div className="flex flex-col justify-center mt-0.5 w-full mr-2 bg-gray-200">
+    <div className="flex flex-col flex-wrap max-w justify-center mt-0.5 w-full mr-2 bg-gray-200">
       <div className="pr-44 pl-44 pt-4 grid gird-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-2">
         {paginatedPokemons.map((pokemon) => (
           <div
