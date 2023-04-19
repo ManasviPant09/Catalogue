@@ -1,4 +1,9 @@
-## Checkout the deployed app here: 
+## Catalogue Website
+The objective is to develop a web application for a simple Pokemon catalog using Next.js, React.js, GraphQL, and Apollo GraphQL. The data has been retrieved from the GraphQL API: https://graphql-pokemon2.vercel.app/. 
+
+Apollo Client library has been utilized to fetch data from the API.
+
+### Checkout the deployed app here: 
 https://catalogue-manasvipant09.vercel.app
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
