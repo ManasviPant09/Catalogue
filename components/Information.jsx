@@ -18,7 +18,7 @@ const Information = () =>{
   }
     
   return(
-    <div className="flex flex-col">
+    <div className="flex flex-col flex-wrap max-w">
       <div className="p-4 border-b-2 border-gray-200 -mt-32">
         <h1 className="text-3xl text-gray-500 mb-4 ml-44">Pokédex</h1>
       </div>

@@ -5,8 +5,8 @@ const Navbar = () => {
       <nav className="sticky top-0 z-30 bg-white flex justify-center border-b-2 border-gray-200 mt-0.5">
         <div className="max-w-7xl mx-auto">
           <div className="relative flex items-center justify-between h-24">
-            <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-              <div className="hidden sm:block sm:ml-6">
+            <div className="flex-1 flex items-center justify-center">
+              <div className="flex flex-col flex-wrap max-w justify-center items-center">
                 <div className="flex h-24 justify-evenly">
                     <div className="flex flex-col items-center hover:bg-gray-600 group pt-4 w-32 rounded-bl-md border-b-8 border-gray-600">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 inline-block group-hover:text-white" fill="currentColor" viewBox="0 0 22 22">
